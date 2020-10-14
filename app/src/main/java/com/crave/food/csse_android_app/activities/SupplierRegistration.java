@@ -225,6 +225,9 @@ public class SupplierRegistration extends AppCompatActivity {
                 else
                 {
                     showToast("Successfully Registered!");
+                    Intent intent = new Intent(SupplierRegistration.this,Login.class);
+                    startActivity(intent);
+                    finish();
                 }
 
                 progressBar.dismiss();
