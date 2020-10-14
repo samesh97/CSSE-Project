@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderPlace">
+    tools:context=".OrderPlaceSitemanager">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +20,9 @@
         android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="Place an Order"
+        android:textStyle="bold"
+
+
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

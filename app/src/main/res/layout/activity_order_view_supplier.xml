@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderViewSitemanager">
+    tools:context=".OrderViewSupplier">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainBar"
         android:layout_width="416dp"
         android:layout_height="80dp"
-        android:layout_marginTop="0dp"
         android:background="@color/ash"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,14 +18,14 @@
 
         <Button
             android:id="@+id/btn_MainOrders"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:textColor="@color/white"
-            android:textSize="15sp"
             android:background="@drawable/button_primary_color_background"
             android:textStyle="bold"
+            android:textSize="15sp"
 
             android:text="Orders"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,15 +34,15 @@
 
         <Button
             android:id="@+id/btn_MainDelivery"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginLeft="44dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:background="@drawable/button_primary_color_background"
             android:textStyle="bold"
+            android:background="@drawable/button_primary_color_background"
             android:textSize="15sp"
-            android:text="Delivery"
+            android:text="Good Receipt"
             app:layout_constraintBottom_toBottomOf="@+id/btn_MainOrders"
             app:layout_constraintStart_toEndOf="@+id/btn_MainOrders"
             app:layout_constraintTop_toTopOf="@+id/btn_MainOrders"
@@ -52,15 +50,15 @@
 
         <Button
             android:id="@+id/btn_MainPayment"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginLeft="44dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:background="@drawable/button_primary_color_background"
             android:textStyle="bold"
+            android:background="@drawable/button_primary_color_background"
             android:textSize="15sp"
-            android:text="Payment"
+            android:text="Invoice"
             app:layout_constraintBottom_toBottomOf="@+id/btn_MainDelivery"
             app:layout_constraintStart_toEndOf="@+id/btn_MainDelivery"
             app:layout_constraintTop_toTopOf="@+id/btn_MainDelivery"
@@ -78,13 +76,15 @@
 
         <EditText
             android:id="@+id/editText_getDate"
-            android:layout_width="286dp"
+            android:layout_width="0dp"
             android:layout_height="36dp"
-
+            android:textSize="12sp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginEnd="0dp"
             android:ems="10"
             android:hint="search by date"
             android:inputType="textPersonName"
@@ -100,6 +100,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/editText_getDate"
             app:layout_constraintStart_toEndOf="@+id/editText_getDate"
             app:layout_constraintTop_toTopOf="@+id/editText_getDate"
@@ -107,7 +109,7 @@
             app:srcCompat="@android:drawable/ic_search_category_default" />
 
         <Spinner
-            android:id="@+id/spinner_orderStatus"
+            android:id="@+id/spinner_order"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -128,20 +130,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchOptions" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="436dp"
-        android:background="@drawable/ic_add_box"
-
-
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/searchOptions"
-        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
