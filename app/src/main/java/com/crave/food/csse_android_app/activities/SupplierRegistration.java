@@ -6,12 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crave.food.csse_android_app.R;
@@ -37,6 +42,9 @@ public class SupplierRegistration extends AppCompatActivity {
     private CircleImageView profile_pic;
 
     public static final int PICK_IMAGE = 100;
+    private ArrayAdapter<CharSequence> adapter;
+
+    private String typeText = "";
 
 
     @Override
@@ -62,6 +70,28 @@ public class SupplierRegistration extends AppCompatActivity {
         progressBar.setMessage("Registering..");
         progressBar.setCancelable(false);
 
+        Spinner type = findViewById(R.id.type);
+
+
+        adapter = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type.setAdapter(adapter);
+
+        type.setSelection(0);
+
+        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                typeText = adapter.getItem(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         reference = FirebaseDatabase.getInstance().getReference("Suppliers");
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
@@ -74,9 +104,6 @@ public class SupplierRegistration extends AppCompatActivity {
         EditText c_password = findViewById(R.id.c_password);
         EditText phone = findViewById(R.id.phone);
         EditText address = findViewById(R.id.address);
-
-        Spinner type = findViewById(R.id.type);
-
 
 
 
@@ -92,9 +119,24 @@ public class SupplierRegistration extends AppCompatActivity {
             showToast("Please enter Email");
             return;
         }
+        if(!Patterns.EMAIL_ADDRESS.matcher(emailT).matches())
+        {
+            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(address.getText().toString().trim().equals(""))
         {
             showToast("Please enter Address");
+            return;
+        }
+        if(phone.getText().toString().trim().equals(""))
+        {
+            showToast("Please enter Phone Number");
+            return;
+        }
+        if(typeText.equals("") || typeText.equals("Type"))
+        {
+            showToast("Please select Type");
             return;
         }
         if(password.getText().toString().trim().equals(""))
@@ -107,19 +149,9 @@ public class SupplierRegistration extends AppCompatActivity {
             showToast("Please Confirm Password");
             return;
         }
-        if(phone.getText().toString().trim().equals(""))
-        {
-            showToast("Please enter Phone Number");
-            return;
-        }
         if(!password.getText().toString().equals(c_password.getText().toString()))
         {
             showToast("Password mismatched!");
-            return;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(emailT).matches())
-        {
-            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
             return;
         }
         if(uri == null)
@@ -144,6 +176,7 @@ public class SupplierRegistration extends AppCompatActivity {
         supplier.setSupplierPhone(phone);
         supplier.setSupplierName(fullname);
         supplier.setPassword(password);
+        supplier.setSupplierType(typeText);
 
         final StorageReference sRef = mStorageRef.child("Supplier/" + supplier.getSupplierId());
         sRef.putFile(uri)

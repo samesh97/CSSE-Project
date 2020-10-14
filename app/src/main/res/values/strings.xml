@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CSSE-Android-App</string>
+
+    <string-array name="type">
+        <item>Type</item>
+        <item>Hardware</item>
+        <item>Paint Material</item>
+        <item>Sand</item>
+        <item>Cement</item>
+    </string-array>
 </resources>
