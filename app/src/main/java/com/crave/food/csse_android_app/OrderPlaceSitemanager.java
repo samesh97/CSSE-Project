@@ -56,6 +56,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         product =(Spinner)findViewById(R.id.spinner_product);
         supplier=(Spinner)findViewById(R.id.spinner_supplier);
 
+
         adapter = ArrayAdapter.createFromResource(this,R.array.type,R.layout.layout_spinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         product.setAdapter(adapter);
@@ -144,14 +145,13 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         intent.putExtra(notesKey,company);
 
 */      insertOrderDetails(companyTxt,phoneTxt,dateCurrentTxt,refNoTxt,quantityTxt,dateRequiredTxt,siteAddressTxt,priceTxt,notesTxt);
-        //startActivity(intent);
+
 
     }
 
     public void insertOrderDetails(String companyTxt,String phoneTxt,String dateCurrentTxt,String refNoTxt,String quantityTxt,String dateRequiredTxt,String siteAddressTxt,String priceTxt,String notesTxt){
         long order_id = System.currentTimeMillis();
         final Order order = new Order();
-
 
         order.setOrderId(String.valueOf(order_id));
         order.setCompanyName(companyTxt);
@@ -176,7 +176,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
             {
                 if(databaseError != null)
                 {
-                    //an error occurred, the error toast will be shown
+
                     showToast(databaseError.getMessage());
                 }
                 else
