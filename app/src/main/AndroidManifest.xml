@@ -26,7 +26,6 @@
         <activity android:name=".OrderPlaceSitemanager" />
         <activity android:name=".OrderViewSupplier" />
         <activity android:name=".OrderRespondSupplier" />
-        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
