@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentView">
+
+    <Button
+        android:id="@+id/btnOrdersPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:background="@drawable/button_primary_color_background"
+        android:text="Orders"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDeliveryPayment"
+        app:layout_constraintEnd_toStartOf="@+id/btnDeliveryPayment"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnDeliveryPayment" />
+
+    <Button
+        android:id="@+id/btnDeliveryPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_primary_color_background"
+        android:text="Delivery"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="34dp" />
+
+    <Button
+        android:id="@+id/btnPaymentPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_primary_color_background"
+        android:text="Payment"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDeliveryPayment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDeliveryPayment"
+        app:layout_constraintTop_toTopOf="@+id/btnDeliveryPayment" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="380dp"
+        android:layout_height="211dp"
+        android:background="@drawable/ash_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeliveryPayment"
+        app:layout_constraintVertical_bias="0.091" />
+</androidx.constraintlayout.widget.ConstraintLayout>
