@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.crave.food.csse_android_app.activities.Login;
 import com.crave.food.csse_android_app.activities.SupplierRegistration;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Reg(View view)
     {
-        Intent intent = new Intent(MainActivity.this, SupplierRegistration.class);
+        Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
     }
 }

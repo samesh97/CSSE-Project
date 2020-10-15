@@ -32,6 +32,7 @@ import com.google.firebase.storage.UploadTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
 public class SupplierRegistration extends AppCompatActivity {
 
 
@@ -67,7 +68,7 @@ public class SupplierRegistration extends AppCompatActivity {
 
         profile_pic = findViewById(R.id.profile_pic);
         progressBar = new ProgressDialog(SupplierRegistration.this);
-        progressBar.setMessage("Registering..");
+        progressBar.setMessage("In Progress..");
         progressBar.setCancelable(false);
 
         Spinner type = findViewById(R.id.type);

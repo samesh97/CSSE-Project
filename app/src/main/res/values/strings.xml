@@ -8,4 +8,21 @@
         <item>Sand</item>
         <item>Cement</item>
     </string-array>
+
+    <string-array name="orderStatus_sitemanager">
+        <item>Pending</item>
+        <item>Approved</item>
+        <item>Declined</item>
+        <item>Placed</item>
+        <item>Accepted</item>
+        <item>Rejected</item>
+    </string-array>
+
+    <string-array name="orderStatus_supplier">
+        <item>New</item>
+        <item>Accepted</item>
+        <item>Rejected</item>
+    </string-array>
+
+
 </resources>
