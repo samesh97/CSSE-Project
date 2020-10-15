@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -61,6 +62,11 @@ public class Login extends AppCompatActivity {
                         {
                             Toast.makeText(Login.this, "Success", Toast.LENGTH_SHORT).show();
                             LoginState.saveUser(Login.this,supplier);
+                            progressDialog.dismiss();
+
+                            Intent intent = new Intent(Login.this,SupplierLoggedActivity.class);
+                            startActivity(intent);
+                            finish();
                             return;
                         }
                     }
@@ -97,6 +103,11 @@ public class Login extends AppCompatActivity {
                         {
                             Toast.makeText(Login.this, "success", Toast.LENGTH_SHORT).show();
                             LoginState.saveUser(Login.this,manager);
+
+                            progressDialog.dismiss();
+                            Intent intent = new Intent(Login.this,ManagerLoggedActivity.class);
+                            startActivity(intent);
+                            finish();
                             return;
                         }
                     }
