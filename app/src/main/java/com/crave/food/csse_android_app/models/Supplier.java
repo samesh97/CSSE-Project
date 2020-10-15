@@ -1,8 +1,27 @@
 package com.crave.food.csse_android_app.models;
 
-public class Supplier
+public class Supplier extends User
 {
     private String supplierId,supplierName, supplierEmail,  supplierAddress, supplierPhone,supplierType,supplierImage,password;
+
+    public Supplier()
+    {
+
+    }
+    public Supplier(String supplierId,String supplierName,String supplierEmail,String supplierAddress,String supplierPhone,String supplierType,String supplierImage,String password)
+    {
+        this.supplierId = supplierId;
+        this.supplierName = supplierName;
+        this.supplierEmail = supplierEmail;
+        this.supplierAddress = supplierAddress;
+        this.supplierPhone = supplierPhone;
+        this.supplierType = supplierType;
+        this.supplierImage = supplierImage;
+        this.password = password;
+    }
+
+
+
 
     public String getPassword() {
         return password;

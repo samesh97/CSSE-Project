@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.crave.food.csse_android_app.R;
+import com.crave.food.csse_android_app.config.LoginState;
 import com.crave.food.csse_android_app.models.Manager;
 import com.crave.food.csse_android_app.models.Supplier;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +27,7 @@ public class Login extends AppCompatActivity {
 
         reference = FirebaseDatabase.getInstance().getReference();
 
-        checkSupplierLogin("holcim@yahoo.com","123456");
+        checkSupplierLogin("holcim@yahoo.com","12345");
     }
 
     public void checkSupplierLogin(final String email, final String password)
@@ -43,6 +44,8 @@ public class Login extends AppCompatActivity {
                         if(supplier != null && supplier.getSupplierEmail().equals(email) && supplier.getPassword().equals(password))
                         {
                             Toast.makeText(Login.this, "Success", Toast.LENGTH_SHORT).show();
+                            LoginState.saveUser(Login.this,supplier);
+                            return;
                         }
                     }
                     Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -75,6 +78,8 @@ public class Login extends AppCompatActivity {
                         if(manager != null && manager.getEmail().equals(email) && manager.getPassword().equals(password))
                         {
                             Toast.makeText(Login.this, "success", Toast.LENGTH_SHORT).show();
+                            LoginState.saveUser(Login.this,manager);
+                            return;
                         }
                     }
                     Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
