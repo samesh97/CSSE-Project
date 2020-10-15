@@ -63,14 +63,18 @@
         app:layout_constraintTop_toBottomOf="@+id/password">
 
         <RadioButton
+            android:id="@+id/manager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manager" />
+            android:hint="Manager"
+            android:fontFamily="@font/gilroy"/>
 
         <RadioButton
+            android:id="@+id/supplier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Supplier" />
+            android:fontFamily="@font/gilroy"
+            android:hint="Supplier"/>
     </RadioGroup>
 
     <Button
@@ -85,6 +89,7 @@
         android:background="@drawable/button_primary_color_background"
         android:fontFamily="@font/gilroy"
         android:text="Login"
+        android:onClick="Login"
         android:textColor="@color/white"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
