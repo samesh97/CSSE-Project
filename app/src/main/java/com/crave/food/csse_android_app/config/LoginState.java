@@ -18,7 +18,7 @@ public class LoginState
     private static final int MANAGER = 1;
     private static final int NO_USER = -99;
 
-    private static final String SUPPLIER_ID_KEY = "Supplier_Id_Key";
+    private static final String SUPPLIER_ID_KEY = "SUPPLIER_ID_KEY";
     private static final String SUPPLIER_NAME_KEY = "SUPPLIER_NAME_KEY";
     private static final String SUPPLIER_IMAGE_KEY = "SUPPLIER_IMAGE_KEY";
     private static final String SUPPLIER_TYPE_KEY = "SUPPLIER_TYPE_KEY";
@@ -26,10 +26,10 @@ public class LoginState
     private static final String SUPPLIER_EMAIL_KEY = "SUPPLIER_EMAIL_KEY";
 
 
-    private static final String  MANAGER_ID_KEY = "Manager_Id_Key";
+    private static final String  MANAGER_ID_KEY = "MANAGER_ID_KEY";
     private static final String  MANAGER_NAME_KEY = "MANAGER_NAME_KEY";
-    private static final String  MANAGER_EMAIL_KEY = "MANAGER_NAME_KEY";
-    private static final String COMPANY_ID_KEY = "Company_Id_Key";
+    private static final String  MANAGER_EMAIL_KEY = "MANAGER_EMAIL_KEY";
+    private static final String COMPANY_ID_KEY = "COMPANY_ID_KEY";
 
     public static User getUser(Context context)
     {
