@@ -213,7 +213,11 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 
     }
 
-    public void placeOrderClicked(View view) {
+    public void placeOrderClicked(View view)
+    {
+
+
+
         EditText companyName = (EditText) findViewById(R.id.editText_companyName);
         EditText phone = (EditText) findViewById(R.id.editTextPhone);
         EditText dateCurrent = (EditText) findViewById(R.id.editTextDate);
@@ -232,7 +236,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         int quantityValue = Integer.parseInt(quantity.getText().toString());
         String dateRequiredTxt = dateRequired.getText().toString();
         String siteAddressTxt = siteAddress.getText().toString();
-        Float priceValue = Float.parseFloat(price.getText().toString());
+        float priceValue = Float.parseFloat(price.getText().toString());
         String notesTxt = notes.getText().toString();
 
 
@@ -240,7 +244,8 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         Button btn_placeOrder = findViewById(R.id.btn_placeOrder);
 
 
-        if (priceValue > 100000) {
+        if (priceValue > 100000)
+        {
             showToast("Order have to be sent for approval");
             btn_placeOrder.setEnabled(false);
 
@@ -255,7 +260,8 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 
     }
 
-    public void insertOrderDetailsApprove(String companyTxt,String phoneTxt,String dateCurrentTxt,String refNoTxt,int quantityValue,String dateRequiredTxt,String siteAddressTxt,float priceValue,String notesTxt){
+    public void insertOrderDetailsApprove(String companyTxt,String phoneTxt,String dateCurrentTxt,String refNoTxt,int quantityValue,String dateRequiredTxt,String siteAddressTxt,float priceValue,String notesTxt)
+    {
         long order_id = System.currentTimeMillis();
         final Order order = new Order();
 
