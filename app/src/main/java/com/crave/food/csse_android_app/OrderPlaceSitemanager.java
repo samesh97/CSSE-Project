@@ -18,9 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crave.food.csse_android_app.activities.Login;
-import com.crave.food.csse_android_app.activities.SupplierRegistration;
+import com.crave.food.csse_android_app.adapters.ProductSpinnerAdapter;
 import com.crave.food.csse_android_app.config.LoginState;
+import com.crave.food.csse_android_app.listners.OnProductClicked;
 import com.crave.food.csse_android_app.models.Manager;
 import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Product;
@@ -33,8 +33,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -42,11 +40,10 @@ import java.util.Locale;
 public class OrderPlaceSitemanager extends AppCompatActivity {
 
 
-    private String productTxt = "";
     private String supplierTxt = "";
     private Spinner product;
     private Spinner supplier;
-    private ArrayAdapter<CharSequence> adapter;
+    private ProductSpinnerAdapter adapter;
     private ArrayAdapter<CharSequence> adapter1;
 
     private ProgressDialog progressBar;
@@ -63,6 +60,8 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
     private EditText price;
     private EditText notes;
     private TextView status;
+
+    private Product selectedProduct = null;
 
     private Button btn_sendForApproval,btn_placeOrder;
 
@@ -94,22 +93,15 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         btn_placeOrder = findViewById(R.id.btn_placeOrder);
 
 
-        adapter = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        product.setAdapter(adapter);
-
-
-        product.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        adapter = new ProductSpinnerAdapter(OrderPlaceSitemanager.this, productList, new OnProductClicked() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                productTxt = adapter.getItem(i).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onChange(Product product)
+            {
+                selectedProduct = product;
             }
         });
+        product.setAdapter(adapter);
+
 
         adapter1 = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -171,6 +163,8 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 
             }
         });
+
+        getProducts();
     }
 
     public void sendForApprovalClicked(View view)
@@ -190,6 +184,11 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         if(phoneTxt.equals(""))
         {
             Toast.makeText(this, "Enter Contact Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(selectedProduct == null)
+        {
+            Toast.makeText(this, "Please select a product", Toast.LENGTH_SHORT).show();
             return;
         }
         if(dateRequiredTxt.equals(""))
@@ -259,6 +258,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
                        {
                            final Product product = snapshot1.getValue(Product.class);
                            productList.add(product);
+                           adapter.notifyDataSetChanged();
                        }
                    }
                    else
@@ -369,7 +369,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         order.setSiteAddress(siteAddressTxt);
         order.setPriceExpected(priceValue);
         order.setNotes(notesTxt);
-        order.setProduct(productTxt);
+        order.setProduct(selectedProduct.getProduct());
         order.setSupplier(supplierTxt);
         order.setStatus(status);
 
