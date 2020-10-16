@@ -86,54 +86,6 @@ public class OrderViewSitemanager extends AppCompatActivity {
 
     }
 
-   public void getProducts()
-   {
-
-//       User user = LoginState.getUser(OrderViewSitemanager.this);
-//
-//       if(user instanceof Manager)
-//       {
-//           productList.clear();
-//           dialog.show();
-//           Manager manager = (Manager) user;
-//
-//           reference= FirebaseDatabase.getInstance().getReference().child("Companies").child(manager.getCompanyId()).child("Products");
-//           reference.addValueEventListener(new ValueEventListener() {
-//               @Override
-//               public void onDataChange(@NonNull DataSnapshot snapshot)
-//               {
-//                   if(snapshot.exists())
-//                   {
-//
-//                       for(final DataSnapshot snapshot1 : snapshot.getChildren())
-//                       {
-//                           final Product product = snapshot1.getValue(Product.class);
-//                           productList.add(product);
-//                       }
-//                   }
-//                   else
-//                   {
-//                       Toast.makeText(OrderViewSitemanager.this, "No Products Found!", Toast.LENGTH_SHORT).show();
-//                   }
-//                   dialog.dismiss();
-//
-//
-//
-//               }
-//
-//               @Override
-//               public void onCancelled(@NonNull DatabaseError error) {
-//                   dialog.dismiss();
-//               }
-//           });
-//       }
-//       else
-//       {
-//           Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-//       }
-
-
-    }
     public void getOrders(final String status)
     {
         orderList.clear();

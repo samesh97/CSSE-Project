@@ -9,16 +9,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="Place an Order"
+            android:fontFamily="@font/gilroy"
             android:textAlignment="center"
 
 
@@ -33,13 +34,19 @@
             android:id="@+id/btn_sendForApproval"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/button_primary_color_background"
             android:onClick="sendForApprovalClicked"
             android:text="Get Approved"
+            android:fontFamily="@font/gilroy"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_placeOrder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_notes"
             app:layout_constraintVertical_bias="0.23" />
@@ -48,12 +55,18 @@
             android:id="@+id/btn_placeOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/button_primary_color_background"
             android:onClick="placeOrderClicked"
             android:text="Place Order"
+            android:fontFamily="@font/gilroy"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/btn_sendForApproval"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_sendForApproval"
             app:layout_constraintTop_toTopOf="@+id/btn_sendForApproval"
             app:layout_constraintVertical_bias="0.0" />
@@ -61,164 +74,163 @@
         <EditText
             android:id="@+id/editText_companyName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="30dp"
-            android:ems="10"
-            android:hint="company name"
+            android:hint="Company name"
+            android:fontFamily="@font/gilroy"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status" />
 
         <EditText
-                android:id="@+id/editTextPhone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="site contact no"
+            android:id="@+id/editTextPhone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/gilroy"
+            android:hint="Site contact no"
+            android:inputType="phone"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_companyName" />
 
-                android:inputType="phone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_companyName" />
 
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="date"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        <EditText
+            android:id="@+id/editText_quantity"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/gilroy"
+            android:hint="Quantity"
+            android:inputType="number"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_supplier" />
 
-            <EditText
-                android:id="@+id/editText_RefNo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="order ref no"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        <EditText
+            android:id="@+id/editText_dateRequired"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/gilroy"
+            android:hint="Date required"
+            android:inputType="date"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_quantity" />
 
-            <EditText
-                android:id="@+id/editText_quantity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/editTextTextPostalAddress"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/gilroy"
+            android:hint="Site address"
+            android:inputType="textPostalAddress"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_dateRequired" />
 
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="quantity"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_supplier" />
+        <EditText
+            android:id="@+id/editText_price"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:fontFamily="@font/gilroy"
+            android:hint="Estimated Price"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
 
-            <EditText
-                android:id="@+id/editText_dateRequired"
-                android:layout_width="0dp"
-                android:layout_height="54dp"
+        <EditText
+            android:id="@+id/editText_notes"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:fontFamily="@font/gilroy"
+            android:hint="Notes (Optional)"
+            android:inputType="textMultiLine"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_price" />
 
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="date required"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_quantity" />
+        <Spinner
+            android:id="@+id/spinner_product"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
-            <EditText
-                android:id="@+id/editTextTextPostalAddress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="site address"
-                android:inputType="textPostalAddress"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_dateRequired" />
-
-            <EditText
-                android:id="@+id/editText_price"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="price range"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
-
-            <EditText
-                android:id="@+id/editText_notes"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="30dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="notes"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_price" />
-
-            <Spinner
-                android:id="@+id/spinner_product"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_RefNo" />
-
-            <Spinner
-                android:id="@+id/spinner_supplier"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_product" />
+        <Spinner
+            android:id="@+id/spinner_supplier"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text_background"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_product" />
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="76dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroy"
             android:text="No Status"
+            android:visibility="invisible"
             android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editText_companyName"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
