@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.listners.OnProductClicked;
@@ -14,18 +15,16 @@ import com.crave.food.csse_android_app.models.Product;
 
 import java.util.ArrayList;
 
-public class ProductSpinnerAdapter extends BaseAdapter implements AdapterView.OnItemSelectedListener
+public class ProductSpinnerAdapter extends BaseAdapter
 {
 
     private Context context;
     private ArrayList<Product> list;
-    private OnProductClicked listener;
 
-    public ProductSpinnerAdapter(Context context, ArrayList<Product> list, OnProductClicked listener)
+    public ProductSpinnerAdapter(Context context, ArrayList<Product> list)
     {
         this.context = context;
         this.list = list;
-        this.listener = listener;
     }
 
     @Override
@@ -53,16 +52,5 @@ public class ProductSpinnerAdapter extends BaseAdapter implements AdapterView.On
         text1.setText(list.get(i).getProduct());
 
         return view1;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
-    {
-        listener.onChange(list.get(i));
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

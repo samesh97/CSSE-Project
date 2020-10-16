@@ -4,6 +4,15 @@ public class Order {
     private String orderId,companyName,phone,dateCurrent,refNo,product,supplier,dateRequired,siteAddress,notes,status;
     private float priceExpected;
     private int quantity;
+    private String unit;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
     public String getOrderId(){return orderId;}
     public void setOrderId(String orderId){
@@ -34,7 +43,7 @@ public class Order {
     public String getSupplier(){return supplier;}
     public void setSupplier(String supplier){this.supplier=supplier;}
 
-    private  int getQuantity(){return quantity;}
+    public   int getQuantity(){return quantity;}
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }

@@ -93,14 +93,21 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         btn_placeOrder = findViewById(R.id.btn_placeOrder);
 
 
-        adapter = new ProductSpinnerAdapter(OrderPlaceSitemanager.this, productList, new OnProductClicked() {
+        adapter = new ProductSpinnerAdapter(OrderPlaceSitemanager.this, productList);
+        product.setAdapter(adapter);
+
+        product.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onChange(Product product)
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
-                selectedProduct = product;
+                selectedProduct = productList.get(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
-        product.setAdapter(adapter);
 
 
         adapter1 = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
@@ -143,11 +150,15 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
                     {
                         btn_placeOrder.setEnabled(true);
                         btn_sendForApproval.setEnabled(false);
+                        btn_placeOrder.setBackground(getResources().getDrawable(R.drawable.button_primary_color_background));
+                        btn_sendForApproval.setBackground(null);
                     }
                     else
                     {
                         btn_placeOrder.setEnabled(false);
                         btn_sendForApproval.setEnabled(true);
+                        btn_sendForApproval.setBackground(getResources().getDrawable(R.drawable.button_primary_color_background));
+                        btn_placeOrder.setBackground(null);
                     }
                 }
                 catch (Exception e)
@@ -304,6 +315,11 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
             Toast.makeText(this, "Enter Contact Number", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(selectedProduct == null)
+        {
+            Toast.makeText(this, "Please select a product", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(dateRequiredTxt.equals(""))
         {
             Toast.makeText(this, "Enter Required Date", Toast.LENGTH_SHORT).show();
@@ -372,14 +388,16 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         order.setProduct(selectedProduct.getProduct());
         order.setSupplier(supplierTxt);
         order.setStatus(status);
+        order.setUnit(selectedProduct.getUnit());
 
 
-        insertOrderApprove(order,toastText);
+        insertToDatabase(order,toastText);
 
     }
 
-    public void insertOrderApprove(final Order order, final String message)
+    public void insertToDatabase(final Order order, final String message)
     {
+        reference = FirebaseDatabase.getInstance().getReference("Orders");
         reference.child(order.getOrderId()).setValue(order, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference)
