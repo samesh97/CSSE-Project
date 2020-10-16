@@ -30,6 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void OrderSupp(View view){
         Intent intent1= new Intent(MainActivity.this,OrderViewSupplier.class);
-        startActivity(intent1);
+
     }
 }
