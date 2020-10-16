@@ -10,6 +10,7 @@
     </string-array>
 
     <string-array name="orderStatus_sitemanager">
+        <item>All orders</item>
         <item>Pending</item>
         <item>Approved</item>
         <item>Declined</item>
@@ -19,6 +20,7 @@
     </string-array>
 
     <string-array name="orderStatus_supplier">
+        <item>All orders</item>
         <item>New</item>
         <item>Accepted</item>
         <item>Rejected</item>
