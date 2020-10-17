@@ -1,10 +1,29 @@
 package com.crave.food.csse_android_app.models;
 
 public class Order {
-    private String orderId,companyName,phone,dateCurrent,refNo,product,supplier,dateRequired,siteAddress,notes,status;
+
+    private Product product;
+    private Supplier supplier;
+    private String orderId,companyName,phone,dateCurrent,refNo,dateRequired,siteAddress,notes,status;
     private float priceExpected;
     private int quantity;
     private String unit;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
     public String getUnit() {
         return unit;
@@ -37,11 +56,8 @@ public class Order {
     public String getRefNo(){return refNo;}
     public void setRefNo(String refNo){this.refNo=refNo;}
 
-    public String getProduct(){return product;}
-    public void setProduct(String product){this.product=product;}
 
-    public String getSupplier(){return supplier;}
-    public void setSupplier(String supplier){this.supplier=supplier;}
+
 
     public   int getQuantity(){return quantity;}
     public void setQuantity(int quantity) {
