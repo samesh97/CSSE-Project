@@ -436,6 +436,14 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         order.setStatus(status);
         order.setUnit(selectedProduct.getUnit());
 
+        User user = LoginState.getUser(OrderPlaceSitemanager.this);
+        if(user instanceof Manager)
+        {
+            Manager manager = (Manager) user;
+            order.setCompanyId(manager.getCompanyId());
+        }
+
+
 
         insertToDatabase(order,toastText);
 

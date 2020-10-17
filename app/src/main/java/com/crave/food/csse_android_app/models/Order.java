@@ -7,6 +7,16 @@ public class Order {
     private String orderId,companyName,phone,dateCurrent,refNo,dateRequired,siteAddress,notes,status;
     private float priceExpected;
     private int quantity;
+    private String companyId;
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+    }
+
     private String unit;
 
     public Product getProduct() {
