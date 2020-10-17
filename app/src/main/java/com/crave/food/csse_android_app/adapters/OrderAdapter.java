@@ -1,15 +1,20 @@
 package com.crave.food.csse_android_app.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.crave.food.csse_android_app.OrderPlaceSitemanager;
+import com.crave.food.csse_android_app.OrderViewSitemanager;
 import com.crave.food.csse_android_app.R;
+import com.crave.food.csse_android_app.listners.OnOrderClicked;
 import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Product;
 
@@ -19,11 +24,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 {
     private Context context;
     private ArrayList<Order> list;
+    private OnOrderClicked orderClicked;
 
-    public OrderAdapter(Context context,ArrayList<Order> list)
+    public OrderAdapter(Context context,ArrayList<Order> list,OnOrderClicked orderClicked)
     {
         this.context = context;
         this.list = list;
+        this.orderClicked= orderClicked;
     }
 
     @NonNull
@@ -38,15 +45,24 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull OrderAdapter.MyViewHolder holder, int position)
     {
 
-        Order order = list.get(position);
+        final Order order = list.get(position);
 
-        holder.ref.setText(order.getRefNo());
-        holder.company.setText(order.getProduct() + " -");
-        holder.cost.setText("" + order.getPriceExpected());
+        holder.ref.setText( order.getRefNo());
+        holder.company.setText( order.getCompanyName());
+        holder.cost.setText(order.getPriceExpected() + " LKR");
         holder.date.setText(order.getDateRequired());
-        holder.name.setText(order.getCompanyName());
+        holder.name.setText(order.getProduct().getProduct()  + " -");
         holder.status.setText(order.getStatus());
         holder.qty.setText(order.getQuantity() + " " + order.getUnit());
+
+        holder.btn_EditOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                orderClicked.orderClick(order);
+                //
+            }
+        });
+
     }
 
     @Override
@@ -58,6 +74,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
         private TextView ref,name,cost,company,date,qty,status;
+        private Button btn_EditOrder;
 
         public MyViewHolder(@NonNull View itemView)
         {
@@ -69,6 +86,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             date = itemView.findViewById(R.id.date);
             qty = itemView.findViewById(R.id.qty);
             status = itemView.findViewById(R.id.status);
+            btn_EditOrder = itemView.findViewById(R.id.btn_EditOrder);
         }
     }
+
+
+
 }

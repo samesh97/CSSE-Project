@@ -18,8 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crave.food.csse_android_app.activities.Login;
+import com.crave.food.csse_android_app.activities.OrderUpdateSitemanager;
 import com.crave.food.csse_android_app.adapters.OrderAdapter;
 import com.crave.food.csse_android_app.config.LoginState;
+import com.crave.food.csse_android_app.listners.OnOrderClicked;
 import com.crave.food.csse_android_app.models.Manager;
 import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Product;
@@ -44,6 +46,9 @@ public class OrderViewSitemanager extends AppCompatActivity {
 
     private OrderAdapter orderAdapter;
 
+    public static Order editingOrder;
+    //public is to access it outside the class
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +61,18 @@ public class OrderViewSitemanager extends AppCompatActivity {
         orderList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerView);
-        orderAdapter = new OrderAdapter(OrderViewSitemanager.this,orderList);
+        orderAdapter = new OrderAdapter(OrderViewSitemanager.this, orderList, new OnOrderClicked() {
+            @Override
+            public void orderClick(Order order) {
+
+                editingOrder = order;
+
+                Toast.makeText(OrderViewSitemanager.this, "" + order.getCompanyName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(OrderViewSitemanager.this, OrderUpdateSitemanager.class);
+                startActivity(intent);
+
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(OrderViewSitemanager.this));
         recyclerView.setAdapter(orderAdapter);
 
@@ -82,7 +98,7 @@ public class OrderViewSitemanager extends AppCompatActivity {
             }
         });
 
-       getOrders(statusTxt);
+      // getOrders(statusTxt);
 
     }
 
@@ -127,6 +143,7 @@ public class OrderViewSitemanager extends AppCompatActivity {
             }
         });
     }
+
 
     public void onClickAddButton(View view)
     {

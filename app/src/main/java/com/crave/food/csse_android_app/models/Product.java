@@ -1,12 +1,23 @@
 package com.crave.food.csse_android_app.models;
 
+import java.util.ArrayList;
+
 public class Product {
     private String currentPrice,expensiveness,imageLink,product,status,supplier,type,unit;
     private long productId;
-    public Product() {
-        //not all fields are string babe
+    private ArrayList<Supplier> suppliers;
+
+    public ArrayList<Supplier> getSuppliers() {
+        return suppliers;
     }
 
+    public void setSuppliers(ArrayList<Supplier> suppliers) {
+        this.suppliers = suppliers;
+    }
+
+    public Product() {
+
+    }
 
 
     public String getCurrentPrice() {
