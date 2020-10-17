@@ -40,11 +40,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
         Order order = list.get(position);
 
-        holder.ref.setText(order.getRefNo());
-        holder.company.setText(order.getProduct() + " -");
-        holder.cost.setText("" + order.getPriceExpected());
+        holder.ref.setText( order.getRefNo());
+        holder.company.setText( order.getCompanyName());
+        holder.cost.setText(order.getPriceExpected() + " LKR");
         holder.date.setText(order.getDateRequired());
-        holder.name.setText(order.getCompanyName());
+        holder.name.setText(order.getProduct()  + " -");
         holder.status.setText(order.getStatus());
         holder.qty.setText(order.getQuantity() + " " + order.getUnit());
     }
