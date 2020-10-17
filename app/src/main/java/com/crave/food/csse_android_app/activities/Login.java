@@ -163,4 +163,10 @@ public class Login extends AppCompatActivity {
            checkSupplierLogin(emailText,passwordText);
        }
     }
+
+    public void GoToRegister(View view)
+    {
+        Intent intent = new Intent(Login.this,SupplierRegistration.class);
+        startActivity(intent);
+    }
 }
