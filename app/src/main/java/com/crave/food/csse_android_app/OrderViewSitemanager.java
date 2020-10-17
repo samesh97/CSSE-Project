@@ -82,7 +82,7 @@ public class OrderViewSitemanager extends AppCompatActivity {
             }
         });
 
-       getOrders(statusTxt);
+      // getOrders(statusTxt);
 
     }
 

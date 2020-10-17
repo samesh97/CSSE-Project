@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".OrderViewSitemanager">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainBar"
-        android:layout_width="416dp"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:background="@color/ash"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +21,12 @@
             android:id="@+id/btn_MainOrders"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/button_primary_color_background"
             android:text="Orders"
-
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -43,9 +43,10 @@
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/button_primary_color_background"
+            android:background="@drawable/ash_color_background"
             android:text="Delivery"
-            android:textColor="@color/white"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btn_MainOrders"
@@ -58,11 +59,12 @@
             android:id="@+id/btn_MainPayment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/button_primary_color_background"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/ash_color_background"
             android:text="Payment"
-            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btn_MainDelivery"
@@ -70,60 +72,51 @@
             app:layout_constraintStart_toEndOf="@+id/btn_MainDelivery"
             app:layout_constraintTop_toTopOf="@+id/btn_MainDelivery"
             app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchOptions"
-        android:layout_width="415dp"
-        android:layout_height="111dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainBar">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_orderStatus">
 
         <EditText
             android:id="@+id/editText_getDate"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_background"
+            android:background="@null"
             android:ems="10"
             android:fontFamily="@font/gilroy"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:hint="search by date"
+            android:hint="Search by date"
             android:inputType="textPersonName"
+            android:paddingLeft="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_search"
-            app:layout_constraintStart_toStartOf="@+id/spinner_orderStatus"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.058" />
 
         <ImageView
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/editText_getDate"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_orderStatus"
-            app:layout_constraintStart_toEndOf="@+id/editText_getDate"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/editText_getDate"
             app:srcCompat="@android:drawable/ic_search_category_default" />
-
-        <Spinner
-            android:id="@+id/spinner_orderStatus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -131,6 +124,11 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -150,5 +148,21 @@
         android:onClick="onClickAddButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_orderStatus"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/ash_color_background"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
