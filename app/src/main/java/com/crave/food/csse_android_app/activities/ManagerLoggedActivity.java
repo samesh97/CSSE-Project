@@ -22,4 +22,6 @@ public class ManagerLoggedActivity extends AppCompatActivity {
         Intent intent = new Intent(ManagerLoggedActivity.this, OrderViewSitemanager.class);
         startActivity(intent);
     }
+
+
 }

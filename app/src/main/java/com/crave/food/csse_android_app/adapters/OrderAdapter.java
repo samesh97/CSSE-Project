@@ -37,6 +37,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.MyViewHolder holder, int position)
     {
+
         Order order = list.get(position);
 
         holder.ref.setText(order.getRefNo());
@@ -46,7 +47,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         holder.name.setText(order.getCompanyName());
         holder.status.setText(order.getStatus());
         holder.qty.setText(order.getQuantity() + " " + order.getUnit());
-
     }
 
     @Override
