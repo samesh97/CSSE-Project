@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,8 @@ import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.listners.OnOrderClicked;
 import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Product;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -26,11 +29,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     private ArrayList<Order> list;
     private OnOrderClicked orderClicked;
 
+
+
     public OrderAdapter(Context context,ArrayList<Order> list,OnOrderClicked orderClicked)
     {
         this.context = context;
         this.list = list;
         this.orderClicked= orderClicked;
+
     }
 
     @NonNull
@@ -54,6 +60,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         holder.name.setText(order.getProduct().getProduct()  + " -");
         holder.status.setText(order.getStatus());
         holder.qty.setText(order.getQuantity() + " " + order.getUnit());
+       // holder.ConstructionCompanyName.setText(order.getCompanyName());
 
         holder.btn_EditOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +70,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             }
         });
 
+        holder.btn_DeleteOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                orderClicked.orderDeleteClick(order);
+
+
+
+            }
+        });
+
     }
+
 
     @Override
     public int getItemCount()
@@ -73,8 +92,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView ref,name,cost,company,date,qty,status;
+        private TextView ref,name,cost,company,date,qty,status,ConstructionCompanyName;
         private Button btn_EditOrder;
+        private Button btn_DeleteOrder;
 
         public MyViewHolder(@NonNull View itemView)
         {
@@ -86,7 +106,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             date = itemView.findViewById(R.id.date);
             qty = itemView.findViewById(R.id.qty);
             status = itemView.findViewById(R.id.status);
+
+            ConstructionCompanyName = itemView.findViewById(R.id.ConstructionCompanyName);
+
+
             btn_EditOrder = itemView.findViewById(R.id.btn_EditOrder);
+            btn_DeleteOrder=itemView.findViewById(R.id.btn_DeleteOrder);
         }
     }
 

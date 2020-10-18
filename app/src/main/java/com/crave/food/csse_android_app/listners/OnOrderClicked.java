@@ -4,5 +4,7 @@ import com.crave.food.csse_android_app.models.Order;
 
 public interface OnOrderClicked {
     public void orderClick(Order order);
+
+    public void orderDeleteClick(Order order);
+
 }
-//mkkda ara kara eka.aai krnwda/ ara tika hrida.harine drop down tik

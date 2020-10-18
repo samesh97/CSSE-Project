@@ -41,12 +41,11 @@ import java.util.Locale;
 public class OrderPlaceSitemanager extends AppCompatActivity {
 
 
-  //  private String supplierTxt = "";
+
     private Spinner product;
     private Spinner supplier;
     private ProductSpinnerAdapter adapter;
-    private SupplierSpinnerAdapter adapterSup;
-   // private ArrayAdapter<CharSequence> adapter1;
+    SupplierSpinnerAdapter spinnerAdapter;
 
 
     private ProgressDialog progressBar;
@@ -105,8 +104,10 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
                 selectedProduct = productList.get(i);
-                SupplierSpinnerAdapter spinnerAdapter = new SupplierSpinnerAdapter(OrderPlaceSitemanager.this,selectedProduct);
+
+                spinnerAdapter = new SupplierSpinnerAdapter(OrderPlaceSitemanager.this,selectedProduct);
                 supplier.setAdapter(spinnerAdapter);
+
                 supplier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
@@ -146,24 +147,6 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 //        });
 
 
-
-/*
-        adapter1 = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        supplier.setAdapter(adapter1);
-
-        supplier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                supplierTxt = adapter1.getItem(i).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-*/
         reference = FirebaseDatabase.getInstance().getReference("Orders");
         progressBar = new ProgressDialog(OrderPlaceSitemanager.this);
         progressBar.setMessage("In Progress..");

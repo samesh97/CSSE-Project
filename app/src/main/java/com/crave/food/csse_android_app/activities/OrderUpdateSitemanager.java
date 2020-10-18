@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crave.food.csse_android_app.OrderPlaceSitemanager;
 import com.crave.food.csse_android_app.OrderViewSitemanager;
@@ -19,17 +20,18 @@ import com.crave.food.csse_android_app.adapters.ProductSpinnerAdapter;
 import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Product;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class OrderUpdateSitemanager extends AppCompatActivity {
 
 
-    private String supplierTxt = "";
+
     private Spinner product;
     private Spinner supplier;
     private ProductSpinnerAdapter adapter;
-    private ArrayAdapter<CharSequence> adapter1;
+
 
     private ProgressDialog progressBar;
     private DatabaseReference reference;
@@ -76,8 +78,6 @@ public class OrderUpdateSitemanager extends AppCompatActivity {
        btn_placeOrder = findViewById(R.id.btn_placeOrder);
 
 
-
-
         companyName.setText(""+order.getCompanyName());
         phone.setText(""+order.getPhone());
         quantity.setText("" + order.getQuantity());
@@ -107,22 +107,22 @@ public class OrderUpdateSitemanager extends AppCompatActivity {
             }
         });
 
+    }
 
-        adapter1 = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        supplier.setAdapter(adapter1);
+   public void updateClicked(View view){
+        Order order=new Order();
+        updateOrder(order);
+       Toast.makeText(this,"Update button clicked",Toast.LENGTH_LONG).show();
 
-        supplier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                supplierTxt = adapter1.getItem(i).toString();
-            }
+   }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
+    public void updateOrder(Order order){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders").child(order.getOrderId());
 
+        Order order1 = new Order();
+        reference.setValue(order1);
+        Toast.makeText(this,"Updated successfully",Toast.LENGTH_LONG).show();
     }
 }
+//me
