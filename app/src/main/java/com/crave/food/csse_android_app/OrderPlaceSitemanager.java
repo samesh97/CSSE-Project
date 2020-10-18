@@ -289,7 +289,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
     public void getProducts()
     {
 
-       User user = LoginState.getUser(OrderPlaceSitemanager.this);
+       User user = LoginState.getInstance().getUser(OrderPlaceSitemanager.this);
 
        if(user instanceof Manager)
        {
@@ -436,7 +436,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         order.setStatus(status);
         order.setUnit(selectedProduct.getUnit());
 
-        User user = LoginState.getUser(OrderPlaceSitemanager.this);
+        User user = LoginState.getInstance().getUser(OrderPlaceSitemanager.this);
         if(user instanceof Manager)
         {
             Manager manager = (Manager) user;

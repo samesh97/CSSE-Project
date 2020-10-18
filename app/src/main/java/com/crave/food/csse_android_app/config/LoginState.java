@@ -31,7 +31,22 @@ public class LoginState
     private static final String  MANAGER_EMAIL_KEY = "MANAGER_EMAIL_KEY";
     private static final String COMPANY_ID_KEY = "COMPANY_ID_KEY";
 
-    public static User getUser(Context context)
+    private static LoginState loginState;
+
+    private LoginState()
+    {
+
+    }
+    public static LoginState getInstance()
+    {
+        if(loginState == null)
+        {
+            loginState = new LoginState();
+        }
+        return loginState;
+    }
+
+    public User getUser(Context context)
     {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_KEY,Context.MODE_PRIVATE);
         User user = null;
@@ -61,7 +76,7 @@ public class LoginState
         return user;
 
     }
-    public static void saveUser(Context context,User user)
+    public void saveUser(Context context,User user)
     {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_KEY,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
