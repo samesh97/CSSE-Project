@@ -160,9 +160,10 @@ public class OrderViewSupplier extends AppCompatActivity {
     }
 
     public void InvoiceButtonClicked(View view){
-        Intent intent = new Intent(this,InvoicesMain.class);
+        Intent intent = new Intent(OrderViewSupplier.this,InvoicesMain.class);
         startActivity(intent);
     }
+
     public void GoodReceiptButtonClicked(View view){
         Intent intent = new Intent(this, View_good_receipt.class);
         startActivity(intent);

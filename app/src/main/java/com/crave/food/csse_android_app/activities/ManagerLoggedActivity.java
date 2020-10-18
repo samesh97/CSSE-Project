@@ -24,12 +24,13 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ManagerLoggedActivity extends AppCompatActivity {
 
     Button receptManage;
+    Button payment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_logged);
 
-
+        payment = findViewById(R.id.button7);
         receptManage = findViewById(R.id.receipt_manage);
         receptManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,12 @@ public class ManagerLoggedActivity extends AppCompatActivity {
     public void viewManageReceipt()
     {
         Intent intent = new Intent(ManagerLoggedActivity.this, Manage_receipt.class);
+        startActivity(intent);
+    }
+
+    public void viewPayment(View view)
+    {
+        Intent intent = new Intent(ManagerLoggedActivity.this,PaymentView.class);
         startActivity(intent);
     }
 
