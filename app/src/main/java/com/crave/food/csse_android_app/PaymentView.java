@@ -32,6 +32,8 @@ public class PaymentView extends AppCompatActivity {
         paymentAdapter = new PaymentAdapter(PaymentView.this,paymentList);
         recyclerView.setLayoutManager(new LinearLayoutManager(PaymentView.this));
         recyclerView.setAdapter(paymentAdapter);
+
+
     }
 
 
