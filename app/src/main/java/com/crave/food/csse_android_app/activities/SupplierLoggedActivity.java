@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.crave.food.csse_android_app.InvoicesMain;
-import com.crave.food.csse_android_app.OrderViewSitemanager;
-import com.crave.food.csse_android_app.PaymentView;
 import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.config.LoginState;
 
@@ -26,7 +24,7 @@ public class SupplierLoggedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_supplier_logged);
 
         add_receipt = findViewById(R.id.add_reciept);
-
+        btn_Shanu = findViewById(R.id.btnSupplierShanuImpl);
         add_receipt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +32,7 @@ public class SupplierLoggedActivity extends AppCompatActivity {
             }
         });
 
-        btn_Shanu = findViewById(R.id.btnSupplierShanuImpl);
+
         btn_Shanu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

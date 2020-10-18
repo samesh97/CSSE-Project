@@ -1,15 +1,13 @@
-package com.crave.food.csse_android_app;
+package com.crave.food.csse_android_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 
-import com.crave.food.csse_android_app.adapters.InvoicesAdapter;
+import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.adapters.PaymentAdapter;
-import com.crave.food.csse_android_app.models.Invoice;
 import com.crave.food.csse_android_app.models.Payment;
 import com.google.firebase.database.DatabaseReference;
 
