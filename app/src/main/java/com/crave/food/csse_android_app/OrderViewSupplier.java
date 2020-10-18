@@ -1,12 +1,14 @@
 package com.crave.food.csse_android_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +17,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.crave.food.csse_android_app.adapters.OrderAdapter;
+import com.crave.food.csse_android_app.adapters.OrderRequestsAdapter;
 import com.crave.food.csse_android_app.config.LoginState;
+import com.crave.food.csse_android_app.listners.OnOrderClicked;
 import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Supplier;
 import com.crave.food.csse_android_app.models.User;
@@ -35,10 +39,21 @@ public class OrderViewSupplier extends AppCompatActivity {
 
     private ArrayList<Order> orderList;
     private RecyclerView recyclerView;
-    private Context context;
 
-    private OrderAdapter orderAdapter;
+    private OrderRequestsAdapter orderAdapter;
 
+    public static Order selectedOrder = null;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK)
+        {
+            getOrders();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +66,23 @@ public class OrderViewSupplier extends AppCompatActivity {
 
         orderList = new ArrayList<>();
 
+
         recyclerView = findViewById(R.id.recyclerView);
 
+        orderAdapter = new OrderRequestsAdapter(OrderViewSupplier.this, orderList, new OnOrderClicked() {
+            @Override
+            public void orderClick(Order order)
+            {
+                selectedOrder = order;
+                Intent intent = new Intent(OrderViewSupplier.this,OrderRespondSupplier.class);
+                startActivityForResult(intent,100);
+            }
 
+            @Override
+            public void orderDeleteClick(Order order) {
+
+            }
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(OrderViewSupplier.this));
         recyclerView.setAdapter(orderAdapter);
@@ -65,7 +94,7 @@ public class OrderViewSupplier extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         status.setAdapter(adapter);
 
-        status.setSelection(0);
+    /*    status.setSelection(0);
 
         status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -79,6 +108,10 @@ public class OrderViewSupplier extends AppCompatActivity {
 
             }
         });
+
+     */
+
+        getOrders();
     }
 
     public void getOrders()
@@ -107,12 +140,13 @@ public class OrderViewSupplier extends AppCompatActivity {
                                 //
                             }
                         }
-                        orderAdapter.notifyDataSetChanged();
+                       orderAdapter.notifyDataSetChanged();
                     }
                 }
                 else
                 {
                     Toast.makeText(OrderViewSupplier.this, "No orders found", Toast.LENGTH_SHORT).show();
+                    orderAdapter.notifyDataSetChanged();
                 }
 
                 dialog.dismiss();

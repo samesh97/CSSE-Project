@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.crave.food.csse_android_app.InvoicesMain;
 import com.crave.food.csse_android_app.OrderViewSitemanager;
+import com.crave.food.csse_android_app.OrderViewSupplier;
 import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.config.LoginState;
 
@@ -23,7 +24,7 @@ public class SupplierLoggedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_supplier_logged);
 
         add_receipt = findViewById(R.id.add_reciept);
-
+        Button buttonOrder= findViewById(R.id.btn_viewOrdersSupplier);
 
 
         add_receipt.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,10 @@ public class SupplierLoggedActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void ViewOrdersSupplier(View view){
+        Intent intent = new Intent(SupplierLoggedActivity.this, OrderViewSupplier.class);
+        startActivity(intent);
+    }
 
     public void viewSupplier(View view)
     {

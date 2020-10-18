@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.crave.food.csse_android_app.InvoicesMain;
 import com.crave.food.csse_android_app.OrderViewSitemanager;
+import com.crave.food.csse_android_app.OrderViewSupplier;
 import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.config.LoginState;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class ManagerLoggedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_logged);
 
+
         receptManage = findViewById(R.id.receipt_manage);
         receptManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +44,8 @@ public class ManagerLoggedActivity extends AppCompatActivity {
         Intent intent = new Intent(ManagerLoggedActivity.this, OrderViewSitemanager.class);
         startActivity(intent);
     }
+
+
     public void viewManageReceipt()
     {
         Intent intent = new Intent(ManagerLoggedActivity.this, Manage_receipt.class);
