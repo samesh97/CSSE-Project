@@ -130,23 +130,6 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 
 
 
-//        adapterSup = new SupplierSpinnerAdapter(OrderPlaceSitemanager.this, supplierList);
-//        supplier.setAdapter(adapterSup);
-//
-//        supplier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
-//            {
-//                selectedSupplier = supplierList.get(i);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-
-
         reference = FirebaseDatabase.getInstance().getReference("Orders");
         progressBar = new ProgressDialog(OrderPlaceSitemanager.this);
         progressBar.setMessage("In Progress..");
@@ -398,7 +381,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
     public void insertOrder(String companyTxt,String phoneTxt,int quantityValue,String dateRequiredTxt,String siteAddressTxt,float priceValue,String notesTxt,String status,String toastText)
     {
         long order_id = System.currentTimeMillis();
-        final Order order = new Order();
+        Order order = new Order();
 
         order.setOrderId(String.valueOf(order_id));
         order.setCompanyName(companyTxt);

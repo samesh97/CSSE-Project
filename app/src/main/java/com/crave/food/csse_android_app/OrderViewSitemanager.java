@@ -1,6 +1,7 @@
 package com.crave.food.csse_android_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,6 +58,16 @@ public class OrderViewSitemanager extends AppCompatActivity  {
 
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 100 && resultCode == RESULT_OK)
+        {
+            getOrders(statusTxt);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_view_sitemanager);
@@ -83,10 +94,8 @@ public class OrderViewSitemanager extends AppCompatActivity  {
             public void orderClick(Order order) {
 
                 editingOrder = order;
-
-                Toast.makeText(OrderViewSitemanager.this, "" + order.getCompanyName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(OrderViewSitemanager.this, OrderUpdateSitemanager.class);
-                startActivity(intent);
+                startActivityForResult(intent,100);
 
             }
 
