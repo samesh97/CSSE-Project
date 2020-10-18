@@ -90,6 +90,7 @@ public class Login extends AppCompatActivity {
 
     public void checkManagerLogin(final String email, final String password)
     {
+
         reference.child("Managers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
