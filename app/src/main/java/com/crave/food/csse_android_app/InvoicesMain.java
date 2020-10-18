@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 
+import com.crave.food.csse_android_app.activities.SupplierLoggedActivity;
 import com.crave.food.csse_android_app.adapters.InvoicesAdapter;
 import com.crave.food.csse_android_app.adapters.OrderAdapter;
 import com.crave.food.csse_android_app.models.Invoice;
@@ -39,5 +42,11 @@ public class InvoicesMain extends AppCompatActivity {
 
 
 
+    }
+
+    public void addNewInvoiceBtnClick(View view)
+    {
+        Intent intent = new Intent(InvoicesMain.this, AddInvoice.class);
+        startActivity(intent);
     }
 }
