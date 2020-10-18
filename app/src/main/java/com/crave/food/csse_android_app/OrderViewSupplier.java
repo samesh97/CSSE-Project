@@ -99,7 +99,6 @@ public class OrderViewSupplier extends AppCompatActivity {
         status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 getOrders();
             }
 
@@ -110,7 +109,6 @@ public class OrderViewSupplier extends AppCompatActivity {
         });
 
      */
-
         getOrders();
     }
 
@@ -134,7 +132,7 @@ public class OrderViewSupplier extends AppCompatActivity {
                         if(user instanceof Supplier)
                         {
                             Supplier supplier = (Supplier) user;
-                            if(supplier.getSupplierId().equals(order.getSupplier().getSupplierId()))
+                            if(supplier.getSupplierId().equals(order.getSupplier().getSupplierId()) && !(order.getStatus().equals("Pending") || order.getStatus().equals("Declined")))
                             {
                                 orderList.add(order);
                                 //
