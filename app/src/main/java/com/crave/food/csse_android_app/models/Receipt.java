@@ -9,6 +9,10 @@ public class Receipt {
     private String qty;
     private String Description;
 
+    public Receipt() {
+
+    }
+
     public void Receipt(){
 
     }
