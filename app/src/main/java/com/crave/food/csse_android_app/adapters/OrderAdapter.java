@@ -62,24 +62,37 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         holder.status.setText(order.getStatus());
         holder.qty.setText(order.getQuantity() + " " + order.getUnit());
 
-        holder.btn_EditOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                orderClicked.orderClick(order);
+        if(order.getStatus().equals("Pending") || order.getStatus().equals("Placed"))
+        {
+            holder.btn_EditOrder.setVisibility(View.VISIBLE);
+            holder.btn_DeleteOrder.setVisibility(View.VISIBLE);
 
-            }
-        });
+            holder.btn_EditOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    orderClicked.orderClick(order);
 
-        holder.btn_DeleteOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                }
+            });
 
-                orderClicked.orderDeleteClick(order);
+            holder.btn_DeleteOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    orderClicked.orderDeleteClick(order);
 
 
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            holder.btn_EditOrder.setVisibility(View.INVISIBLE);
+            holder.btn_DeleteOrder.setVisibility(View.INVISIBLE);
+        }
+
+
 
     }
 
