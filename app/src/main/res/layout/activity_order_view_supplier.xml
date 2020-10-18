@@ -10,7 +10,7 @@
         android:id="@+id/mainBar"
         android:layout_width="416dp"
         android:layout_height="80dp"
-        android:background="@color/ash"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,12 +18,14 @@
 
         <Button
             android:id="@+id/btn_MainOrders"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:textColor="@color/white"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/button_primary_color_background"
+            android:textColor="@color/white"
+
             android:textStyle="bold"
             android:textSize="15sp"
 
@@ -34,15 +36,17 @@
 
         <Button
             android:id="@+id/btn_MainDelivery"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:background="@drawable/button_primary_color_background"
-            android:textSize="15sp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:background="@drawable/ash_color_background"
+            android:onClick="GoodReceiptButtonClicked"
             android:text="Good Receipt"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btn_MainOrders"
             app:layout_constraintStart_toEndOf="@+id/btn_MainOrders"
             app:layout_constraintTop_toTopOf="@+id/btn_MainOrders"
@@ -50,15 +54,19 @@
 
         <Button
             android:id="@+id/btn_MainPayment"
-            android:layout_width="wrap_content"
+
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:background="@drawable/button_primary_color_background"
-            android:textSize="15sp"
+            android:layout_marginStart="36dp"
+
+            android:layout_marginLeft="36dp"
+            android:background="@drawable/ash_color_background"
+            android:onClick="InvoiceButtonClicked"
             android:text="Invoice"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btn_MainDelivery"
             app:layout_constraintStart_toEndOf="@+id/btn_MainDelivery"
             app:layout_constraintTop_toTopOf="@+id/btn_MainDelivery"
@@ -74,50 +82,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainBar">
 
-        <EditText
-            android:id="@+id/editText_getDate"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:textSize="12sp"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginEnd="0dp"
-            android:ems="10"
-            android:hint="Search by date"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintVertical_bias="0.058" />
-
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="62dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editText_getDate"
-            app:layout_constraintStart_toEndOf="@+id/editText_getDate"
-            app:layout_constraintTop_toTopOf="@+id/editText_getDate"
-            app:layout_constraintVertical_bias="0.23"
-            app:srcCompat="@android:drawable/ic_search_category_default" />
-
         <Spinner
             android:id="@+id/spinner_order"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,6 +103,7 @@
         android:layout_width="409dp"
         android:layout_height="507dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchOptions" />
 

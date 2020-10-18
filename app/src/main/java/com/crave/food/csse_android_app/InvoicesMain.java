@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import com.crave.food.csse_android_app.activities.PaymentView;
 import com.crave.food.csse_android_app.activities.SupplierLoggedActivity;
 import com.crave.food.csse_android_app.adapters.InvoicesAdapter;
 import com.crave.food.csse_android_app.adapters.OrderAdapter;
@@ -47,6 +48,12 @@ public class InvoicesMain extends AppCompatActivity {
     public void addNewInvoiceBtnClick(View view)
     {
         Intent intent = new Intent(InvoicesMain.this, AddInvoice.class);
+        startActivity(intent);
+    }
+
+    public void OrdersButtonClicked(View view)
+    {
+        Intent intent = new Intent(this, OrderViewSupplier.class);
         startActivity(intent);
     }
 }

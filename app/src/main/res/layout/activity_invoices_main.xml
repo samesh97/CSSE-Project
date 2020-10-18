@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_primary_color_background"
+        android:onClick="OrdersButtonClicked"
         android:text="Good Receipt"
         android:textColor="@color/white"
         tools:layout_editor_absoluteX="157dp"
