@@ -26,6 +26,7 @@
         <activity android:name=".activities.Login" />
         <activity android:name=".activities.SupplierRegistration" />
         <activity android:name=".OrderViewSitemanager" />
+        <activity android:name=".activities.OrderUpdateSitemanager"/>
         <activity android:name=".OrderPlaceSitemanager" />
         <activity android:name=".OrderViewSupplier" />
         <activity android:name=".OrderRespondSupplier" />
