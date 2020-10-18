@@ -18,6 +18,7 @@ import com.crave.food.csse_android_app.config.LoginState;
 public class SupplierLoggedActivity extends AppCompatActivity {
 
     Button add_receipt,view_btn;
+    Button shanu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,14 @@ public class SupplierLoggedActivity extends AppCompatActivity {
                 openAddReceipt();
             }
         });
+
+        shanu = findViewById(R.id.btn_shanu);
+        shanu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewSupplier();
+            }
+        });
     }
     public void openAddReceipt(){
         Intent intent = new Intent(this,add_good_receipt.class);
@@ -44,7 +53,7 @@ public class SupplierLoggedActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void viewSupplier(View view)
+    public void viewSupplier()
     {
         Intent intent = new Intent(SupplierLoggedActivity.this, InvoicesMain.class);
         startActivity(intent);
