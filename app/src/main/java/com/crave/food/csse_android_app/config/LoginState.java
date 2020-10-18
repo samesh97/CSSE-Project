@@ -76,7 +76,7 @@ public class LoginState
         return user;
 
     }
-    public void saveUser(Context context,User user)
+    public boolean saveUser(Context context,User user)
     {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_KEY,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -91,6 +91,9 @@ public class LoginState
            editor.putString(MANAGER_NAME_KEY,manager.getManagerName());
            editor.putString(MANAGER_EMAIL_KEY,manager.getEmail());
            editor.putString(COMPANY_ID_KEY,manager.getCompanyId());
+           editor.apply();
+
+           return true;
        }
        else if(user instanceof  Supplier)
        {
@@ -104,6 +107,9 @@ public class LoginState
            editor.putString(SUPPLIER_TYPE_KEY,supplier.getSupplierType());
            editor.putString(SUPPLIER_PHONE_KEY,supplier.getSupplierPhone());
            editor.putString(SUPPLIER_EMAIL_KEY,supplier.getSupplierEmail());
+           editor.apply();
+
+           return true;
        }
        else if(user == null)
        {
@@ -118,9 +124,22 @@ public class LoginState
            editor.remove(SUPPLIER_TYPE_KEY);
            editor.remove(SUPPLIER_PHONE_KEY);
            editor.remove(SUPPLIER_EMAIL_KEY);
+           editor.apply();
+
+           return false;
        }
+       return false;
 
-
-        editor.apply();
+    }
+    public int getUserType(Context context)
+    {
+       SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_KEY,Context.MODE_PRIVATE);
+       int value = preferences.getInt(USER_TYPE_KEY,NO_USER);
+        switch (value)
+        {
+            case SUPPLIER : return SUPPLIER;
+            case MANAGER : return MANAGER;
+            default:return NO_USER;
+        }
     }
 }

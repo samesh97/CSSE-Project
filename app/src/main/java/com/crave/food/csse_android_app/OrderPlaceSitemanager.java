@@ -442,10 +442,18 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         });
     }
 
-    public void showToast(String message)
+    public boolean showToast(String message)
     {
         //show the toast
         if(message != null && !message.equals(""))
+        {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }
