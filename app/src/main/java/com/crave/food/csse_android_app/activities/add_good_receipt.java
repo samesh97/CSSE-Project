@@ -53,10 +53,17 @@ public class add_good_receipt extends AppCompatActivity {
         String qty1 = qty.getText().toString();
         String dis1 = dis.getText().toString();
 
-        String id = databaseRecept.push().getKey();
-        Receipt receipt = new Receipt(id,cmopanyName,Rno,product1,qty1,dis1);
-        databaseRecept.child(id).setValue(receipt);
-        Toast.makeText(this,"Successfully Added!",Toast.LENGTH_LONG).show();
+        if (cmopanyName.equals(null) || Rno.equals(null) || product1.equals(null)){
+
+            String id = databaseRecept.push().getKey();
+            Receipt receipt = new Receipt(id,cmopanyName,Rno,product1,qty1,dis1);
+            databaseRecept.child(id).setValue(receipt);
+            Toast.makeText(this,"Successfully Added!",Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this,"Please fill informations!",Toast.LENGTH_LONG).show();
+        }
+
     }
     public void openVIewRecipt(){
         Intent intent = new Intent(this,View_good_receipt.class);
