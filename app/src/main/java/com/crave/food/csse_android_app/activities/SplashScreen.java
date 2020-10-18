@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run()
             {
                 Intent intent;
-                User user = LoginState.getUser(SplashScreen.this);
+                User user = LoginState.getInstance().getUser(SplashScreen.this);
 
                 if(user instanceof Supplier)
                 {

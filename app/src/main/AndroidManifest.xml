@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -27,6 +27,7 @@
         <activity android:name=".activities.Login" />
         <activity android:name=".activities.SupplierRegistration" />
         <activity android:name=".OrderViewSitemanager" />
+        <activity android:name=".activities.OrderUpdateSitemanager"/>
         <activity android:name=".OrderPlaceSitemanager" />
         <activity android:name=".OrderViewSupplier" />
         <activity android:name=".OrderRespondSupplier" />

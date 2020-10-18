@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +30,8 @@ import com.crave.food.csse_android_app.models.Order;
 import com.crave.food.csse_android_app.models.Product;
 import com.crave.food.csse_android_app.models.Supplier;
 import com.crave.food.csse_android_app.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class OrderViewSitemanager extends AppCompatActivity {
+public class OrderViewSitemanager extends AppCompatActivity  {
 
     DatabaseReference reference;
     private ArrayAdapter<CharSequence> adapter;
@@ -43,11 +48,13 @@ public class OrderViewSitemanager extends AppCompatActivity {
     private String statusTxt ="All orders";
     private ArrayList<Order> orderList;
     private RecyclerView recyclerView;
+    private Context context;
 
     private OrderAdapter orderAdapter;
 
     public static Order editingOrder;
-    //public is to access it outside the class
+    public static Order deletingOrder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +68,17 @@ public class OrderViewSitemanager extends AppCompatActivity {
         orderList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerView);
+/*
+        public void deleteOrder(Order order){
+            DatabaseReference delete_Order = FirebaseDatabase.getInstance().getReference("Orders").child(order.getOrderId());
+            delete_Order.removeValue();
+
+        }
+
+ */
         orderAdapter = new OrderAdapter(OrderViewSitemanager.this, orderList, new OnOrderClicked() {
+
+
             @Override
             public void orderClick(Order order) {
 
@@ -72,7 +89,65 @@ public class OrderViewSitemanager extends AppCompatActivity {
                 startActivity(intent);
 
             }
+
+            @Override
+            public void orderDeleteClick(final Order order)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(OrderViewSitemanager.this);
+                builder.setTitle("Are you sure you want to delete?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    {
+                        deletingOrder = order;
+
+                        //Toast.makeText(OrderViewSitemanager.this, "deleted " + order.getCompanyName(), Toast.LENGTH_SHORT).show();
+                        DatabaseReference delete_Order = FirebaseDatabase.getInstance().getReference("Orders").child(order.getOrderId());
+                        delete_Order.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task)
+                            {
+                                if (task.isSuccessful()) {
+
+                                    Toast.makeText(OrderViewSitemanager.this, "deleted " , Toast.LENGTH_SHORT).show();
+                                    getOrders(statusTxt);
+
+
+                                } else {
+                                    Toast.makeText(OrderViewSitemanager.this, "Not deleted " , Toast.LENGTH_SHORT).show();
+                                }
+
+
+                            }
+                        });;
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                builder.show();
+
+
+
+            }
+
+
         });
+
+
+        //    orderAdapter = new OrderAdapter(OrderViewSitemanager.this, orderList, new OnOrderClicked() {
+           // @Override
+           // public void orderClick(Order order) {
+
+
+      //      } });
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(OrderViewSitemanager.this));
         recyclerView.setAdapter(orderAdapter);
 
@@ -101,6 +176,11 @@ public class OrderViewSitemanager extends AppCompatActivity {
       // getOrders(statusTxt);
 
     }
+
+  //  public void deleteOrder(Order order) {
+  //      DatabaseReference delete_Order = FirebaseDatabase.getInstance().getReference("Orders");
+    //     delete_Order.removeValue();
+  //  }
 
     public void getOrders(final String status)
     {
@@ -131,6 +211,8 @@ public class OrderViewSitemanager extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(OrderViewSitemanager.this, "No orders found", Toast.LENGTH_SHORT).show();
+                    orderAdapter.notifyDataSetChanged();
+
                 }
 
                 dialog.dismiss();
@@ -144,6 +226,10 @@ public class OrderViewSitemanager extends AppCompatActivity {
         });
     }
 
+   // protected void onResume(){
+  //      super.onResume();
+  //      getOrders();
+ //   }
 
     public void onClickAddButton(View view)
     {

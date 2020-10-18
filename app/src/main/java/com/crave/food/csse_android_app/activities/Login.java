@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
                         if(supplier != null && supplier.getSupplierEmail().equals(email) && supplier.getPassword().equals(password))
                         {
                             Toast.makeText(Login.this, "Success", Toast.LENGTH_SHORT).show();
-                            LoginState.saveUser(Login.this,supplier);
+                            LoginState.getInstance().saveUser(Login.this,supplier);
                             progressDialog.dismiss();
 
                             Intent intent = new Intent(Login.this,SupplierLoggedActivity.class);
@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity {
                         if(manager != null && manager.getEmail().equals(email) && manager.getPassword().equals(password))
                         {
                             Toast.makeText(Login.this, "success", Toast.LENGTH_SHORT).show();
-                            LoginState.saveUser(Login.this,manager);
+                            LoginState.getInstance().saveUser(Login.this,manager);
 
                             progressDialog.dismiss();
                             Intent intent = new Intent(Login.this,ManagerLoggedActivity.class);
