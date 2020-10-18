@@ -43,6 +43,7 @@ public class LoginStateTest {
     @Test
     public void getInstance()
     {
+        //passed
         User user = loginState.getUser(context);
         assertNotNull(user);
     }

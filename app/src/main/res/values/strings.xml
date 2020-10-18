@@ -7,6 +7,7 @@
         <item>Paint Material</item>
         <item>Sand</item>
         <item>Cement</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="orderStatus_sitemanager">
