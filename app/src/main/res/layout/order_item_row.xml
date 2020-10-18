@@ -13,19 +13,16 @@
         android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/ref"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+        <Button
+            android:id="@+id/btn_EditOrder"
+            android:layout_width="34dp"
+            android:layout_height="32dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/gilroy"
-            android:text="Sample"
-            android:textColor="@android:color/black"
-            android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:text="E"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status" />
 
         <TextView
             android:id="@+id/status"
@@ -40,17 +37,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ref" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/gilroy"
-        android:text="Sample"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/ref"
-        app:layout_constraintTop_toBottomOf="@+id/ref" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroy"
+            android:text="Sample"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/ref"
+            app:layout_constraintTop_toBottomOf="@+id/ref" />
 
         <TextView
             android:id="@+id/qty"
@@ -66,29 +63,29 @@
             app:layout_constraintStart_toEndOf="@+id/name"
             app:layout_constraintTop_toTopOf="@+id/name" />
 
-    <TextView
-        android:id="@+id/cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/gilroy"
-        android:text="Sample"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        <TextView
+            android:id="@+id/cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroy"
+            android:text="Sample"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <TextView
-        android:id="@+id/company"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/gilroy"
-        android:text="Sample"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/cost"
-        app:layout_constraintTop_toBottomOf="@+id/cost" />
+        <TextView
+            android:id="@+id/company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroy"
+            android:text="Sample"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/cost"
+            app:layout_constraintTop_toBottomOf="@+id/cost" />
 
         <TextView
             android:id="@+id/date"
@@ -103,6 +100,32 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/company"
             app:layout_constraintTop_toBottomOf="@+id/company" />
+
+        <TextView
+            android:id="@+id/ref"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/gilroy"
+            android:text="Sample"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_DeleteOrder"
+            android:layout_width="34dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:text="D"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_EditOrder"
+            app:layout_constraintVertical_bias="0.384" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

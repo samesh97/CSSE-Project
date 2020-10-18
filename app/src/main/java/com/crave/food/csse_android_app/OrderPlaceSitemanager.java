@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crave.food.csse_android_app.adapters.ProductSpinnerAdapter;
+import com.crave.food.csse_android_app.adapters.SupplierSpinnerAdapter;
 import com.crave.food.csse_android_app.config.LoginState;
 import com.crave.food.csse_android_app.listners.OnProductClicked;
 import com.crave.food.csse_android_app.models.Manager;
@@ -40,11 +41,13 @@ import java.util.Locale;
 public class OrderPlaceSitemanager extends AppCompatActivity {
 
 
-    private String supplierTxt = "";
+  //  private String supplierTxt = "";
     private Spinner product;
     private Spinner supplier;
     private ProductSpinnerAdapter adapter;
-    private ArrayAdapter<CharSequence> adapter1;
+    private SupplierSpinnerAdapter adapterSup;
+   // private ArrayAdapter<CharSequence> adapter1;
+
 
     private ProgressDialog progressBar;
     private DatabaseReference reference;
@@ -62,6 +65,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
     private TextView status;
 
     private Product selectedProduct = null;
+    private Supplier selectedSupplier= null;
 
     private Button btn_sendForApproval,btn_placeOrder;
 
@@ -101,6 +105,20 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
                 selectedProduct = productList.get(i);
+                SupplierSpinnerAdapter spinnerAdapter = new SupplierSpinnerAdapter(OrderPlaceSitemanager.this,selectedProduct);
+                supplier.setAdapter(spinnerAdapter);
+                supplier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+                    {
+                        selectedSupplier = selectedProduct.getSuppliers().get(i);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
             }
 
             @Override
@@ -110,6 +128,26 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         });
 
 
+
+//        adapterSup = new SupplierSpinnerAdapter(OrderPlaceSitemanager.this, supplierList);
+//        supplier.setAdapter(adapterSup);
+//
+//        supplier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+//            {
+//                selectedSupplier = supplierList.get(i);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+
+
+
+/*
         adapter1 = ArrayAdapter.createFromResource(this, R.array.type, R.layout.layout_spinner);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         supplier.setAdapter(adapter1);
@@ -125,7 +163,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 
             }
         });
-
+*/
         reference = FirebaseDatabase.getInstance().getReference("Orders");
         progressBar = new ProgressDialog(OrderPlaceSitemanager.this);
         progressBar.setMessage("In Progress..");
@@ -176,6 +214,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         });
 
         getProducts();
+
     }
 
     public void sendForApprovalClicked(View view)
@@ -246,6 +285,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         }
 
     }
+
     public void getProducts()
     {
 
@@ -269,6 +309,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
                        {
                            final Product product = snapshot1.getValue(Product.class);
                            productList.add(product);
+
                            adapter.notifyDataSetChanged();
                        }
                    }
@@ -320,6 +361,11 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
             Toast.makeText(this, "Please select a product", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(selectedSupplier == null)
+        {
+            Toast.makeText(this, "Please select a supplier", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(dateRequiredTxt.equals(""))
         {
             Toast.makeText(this, "Enter Required Date", Toast.LENGTH_SHORT).show();
@@ -357,7 +403,7 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
 
         if (priceValue > 100000)
         {
-            showToast("Order have to be sent for approval");
+            showToast("Order has to be sent for approval");
 
         }
         {
@@ -385,10 +431,18 @@ public class OrderPlaceSitemanager extends AppCompatActivity {
         order.setSiteAddress(siteAddressTxt);
         order.setPriceExpected(priceValue);
         order.setNotes(notesTxt);
-        order.setProduct(selectedProduct.getProduct());
-        order.setSupplier(supplierTxt);
+        order.setProduct(selectedProduct);
+        order.setSupplier(selectedSupplier);
         order.setStatus(status);
         order.setUnit(selectedProduct.getUnit());
+
+        User user = LoginState.getUser(OrderPlaceSitemanager.this);
+        if(user instanceof Manager)
+        {
+            Manager manager = (Manager) user;
+            order.setCompanyId(manager.getCompanyId());
+        }
+
 
 
         insertToDatabase(order,toastText);

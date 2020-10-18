@@ -86,4 +86,8 @@ public class Supplier extends User
     public void setSupplierImage(String supplierImage) {
         this.supplierImage = supplierImage;
     }
+
+    public String getSuppliers() {
+        return supplierName;
+    }
 }
