@@ -13,16 +13,17 @@
         android:layout_height="match_parent">
 
 
-        <Button
+        <ImageView
             android:id="@+id/btn_EditOrder"
-            android:layout_width="34dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginRight="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_edit"
             android:text="E"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/status" />
+            app:layout_constraintBottom_toTopOf="@+id/btn_DeleteOrder"
+            app:layout_constraintEnd_toEndOf="@+id/btn_DeleteOrder"
+            app:layout_constraintStart_toStartOf="@+id/btn_DeleteOrder"
+            app:tint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/status"
@@ -115,17 +116,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageView
             android:id="@+id/btn_DeleteOrder"
-            android:layout_width="34dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginRight="28dp"
-            android:text="D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/ic_delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_EditOrder"
-            app:layout_constraintVertical_bias="0.384" />
+            app:tint="@color/colorPrimary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

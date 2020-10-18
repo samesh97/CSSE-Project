@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,8 +94,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
         private TextView ref,name,cost,company,date,qty,status,ConstructionCompanyName;
-        private Button btn_EditOrder;
-        private Button btn_DeleteOrder;
+        private ImageView btn_EditOrder;
+        private ImageView btn_DeleteOrder;
 
         public MyViewHolder(@NonNull View itemView)
         {
