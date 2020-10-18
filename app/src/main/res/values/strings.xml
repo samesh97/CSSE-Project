@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CSSE-Android-App</string>
+    <string name="app_name">Construction Management</string>
 
     <string-array name="type">
         <item>Type</item>

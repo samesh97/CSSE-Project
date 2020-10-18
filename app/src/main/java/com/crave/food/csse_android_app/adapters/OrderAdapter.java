@@ -80,9 +80,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                 public void onClick(View view) {
 
                     orderClicked.orderDeleteClick(order);
-
-
-
                 }
             });
         }
