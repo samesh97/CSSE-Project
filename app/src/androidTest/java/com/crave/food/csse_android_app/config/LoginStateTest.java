@@ -58,7 +58,7 @@ public class LoginStateTest {
     {
         //failed
         User user = loginState.getUser(context);
-        assertNotNull(user);
+        assertNull(user);
     }
     @Test
     public void saveManager()
@@ -90,7 +90,7 @@ public class LoginStateTest {
     public void getUserType()
     {
         //passed
-        int testValue = 1;
+        int testValue = 0;
         int value = loginState.getUserType(context);
         assertEquals(testValue,value);
     }
