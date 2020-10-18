@@ -5,6 +5,10 @@ public class Invoice {
     private String cost;
     private double price;
 
+    public Invoice(String id, String cost){
+        this.id = id;
+        this.cost = cost;
+    }
     public String getId() {
         return id;
     }

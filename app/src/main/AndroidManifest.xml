@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Manage_receipt"></activity>
+        <activity android:name=".AddInvoice"></activity>
+        <activity android:name=".activities.Manage_receipt" />
         <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SupplierLoggedActivity" />
+        <activity android:name=".activities.PaymentView" />
         <activity android:name=".activities.View_good_receipt" />
         <activity android:name=".activities.add_good_receipt" />
         <activity android:name=".activities.ManagerLoggedActivity" />
