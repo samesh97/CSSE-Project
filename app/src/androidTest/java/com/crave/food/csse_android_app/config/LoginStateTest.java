@@ -35,45 +35,64 @@ public class LoginStateTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() throws Exception
+    {
+
     }
 
     @Test
     public void getInstance()
     {
         User user = loginState.getUser(context);
-        //if a user has logged in
-        //test case will be successful
         assertNotNull(user);
     }
     @Test
-    public void getUser()
+    public void saveUserNull()
     {
+        //failed
+        boolean res = loginState.saveUser(context,null);
+        assertTrue(res);
+    }
+    @Test
+    public void getUsers()
+    {
+        //failed
+        User user = loginState.getUser(context);
+        assertNotNull(user);
+    }
+    @Test
+    public void saveManager()
+    {
+        //passed
+        boolean res = loginState.saveUser(context,new Manager());
+        assertTrue(res);
+    }
+    @Test
+    public void isSame()
+    {
+        //passed
         User user = loginState.getUser(context);
         if(user instanceof Manager)
         {
-            //if manager
             Manager manager = (Manager) user;
             assertEquals(user,manager);
         }
-        else if(user instanceof Supplier)
-        {
-            //if supplier
-            Supplier supplier = (Supplier) user;
-            assertNotEquals(((Supplier) user).getSupplierId(),supplier.getSupplierId());
-        }
-        else
-        {
-            //if null
-            assertNull(user);
-        }
-
     }
     @Test
-    public void saveUser()
+    public void isSupplierAndUserSame()
     {
-        boolean res = loginState.saveUser(context,new Supplier());
-        assertTrue(res);
+        //failed
+        User user = loginState.getUser(context);
+        Supplier supplier = (Supplier) user;
+        assertEquals(user,supplier);
+    }
+    @Test
+    public void getUserType()
+    {
+        //passed
+        int testValue = 1;
+        int value = loginState.getUserType(context);
+        assertEquals(testValue,value);
     }
 
 }

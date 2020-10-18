@@ -131,4 +131,15 @@ public class LoginState
        return false;
 
     }
+    public int getUserType(Context context)
+    {
+       SharedPreferences preferences = context.getSharedPreferences(SHARED_PREF_KEY,Context.MODE_PRIVATE);
+       int value = preferences.getInt(USER_TYPE_KEY,NO_USER);
+        switch (value)
+        {
+            case SUPPLIER : return SUPPLIER;
+            case MANAGER : return MANAGER;
+            default:return NO_USER;
+        }
+    }
 }
