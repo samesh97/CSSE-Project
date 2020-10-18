@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.crave.food.csse_android_app.activities.Login;
+import com.crave.food.csse_android_app.activities.SupplierLoggedActivity;
 import com.crave.food.csse_android_app.activities.SupplierRegistration;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,4 +33,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent1= new Intent(MainActivity.this,OrderViewSupplier.class);
 
     }
+
 }
