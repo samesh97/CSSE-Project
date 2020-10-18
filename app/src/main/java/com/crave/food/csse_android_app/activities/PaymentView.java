@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
+import com.crave.food.csse_android_app.OrderViewSitemanager;
 import com.crave.food.csse_android_app.R;
 import com.crave.food.csse_android_app.adapters.PaymentAdapter;
 import com.crave.food.csse_android_app.models.Payment;
@@ -34,7 +37,11 @@ public class PaymentView extends AppCompatActivity {
 
     }
 
-
+    public void OrderButtonClicked(View view)
+    {
+        Intent intent = new Intent(this, OrderViewSitemanager.class);
+        startActivity(intent);
+    }
 
 
 }

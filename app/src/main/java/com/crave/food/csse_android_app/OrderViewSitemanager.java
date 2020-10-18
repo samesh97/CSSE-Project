@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.crave.food.csse_android_app.activities.Login;
 import com.crave.food.csse_android_app.activities.OrderUpdateSitemanager;
+import com.crave.food.csse_android_app.activities.PaymentView;
 import com.crave.food.csse_android_app.adapters.OrderAdapter;
 import com.crave.food.csse_android_app.config.LoginState;
 import com.crave.food.csse_android_app.listners.OnOrderClicked;
@@ -245,4 +246,17 @@ public class OrderViewSitemanager extends AppCompatActivity  {
         Intent intent = new Intent(this,OrderPlaceSitemanager.class);
         startActivity(intent);
     }
+
+    public void DeliveryButtonClicked(View view)
+    {
+   //     Intent intent = new Intent(this,OrderPlaceSitemanager.class);
+   //     startActivity(intent);
+    }
+
+    public void PaymentButtonClicked(View view)
+    {
+        Intent intent = new Intent(this, PaymentView.class);
+        startActivity(intent);
+    }
+
 }

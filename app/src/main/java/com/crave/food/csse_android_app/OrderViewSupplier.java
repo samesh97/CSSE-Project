@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.crave.food.csse_android_app.activities.View_good_receipt;
 import com.crave.food.csse_android_app.adapters.OrderAdapter;
 import com.crave.food.csse_android_app.adapters.OrderRequestsAdapter;
 import com.crave.food.csse_android_app.config.LoginState;
@@ -157,5 +158,15 @@ public class OrderViewSupplier extends AppCompatActivity {
             }
         });
     }
+
+    public void InvoiceButtonClicked(View view){
+        Intent intent = new Intent(this,InvoicesMain.class);
+        startActivity(intent);
+    }
+    public void GoodReceiptButtonClicked(View view){
+        Intent intent = new Intent(this, View_good_receipt.class);
+        startActivity(intent);
+    }
+
 
 }
