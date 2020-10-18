@@ -105,6 +105,20 @@ public class LoginState
            editor.putString(SUPPLIER_PHONE_KEY,supplier.getSupplierPhone());
            editor.putString(SUPPLIER_EMAIL_KEY,supplier.getSupplierEmail());
        }
+       else if(user == null)
+       {
+           editor.remove(USER_TYPE_KEY);
+           editor.remove(MANAGER_ID_KEY);
+           editor.remove(MANAGER_NAME_KEY);
+           editor.remove(MANAGER_EMAIL_KEY);
+           editor.remove(COMPANY_ID_KEY);
+           editor.remove(SUPPLIER_ID_KEY);
+           editor.remove(SUPPLIER_NAME_KEY);
+           editor.remove(SUPPLIER_IMAGE_KEY);
+           editor.remove(SUPPLIER_TYPE_KEY);
+           editor.remove(SUPPLIER_PHONE_KEY);
+           editor.remove(SUPPLIER_EMAIL_KEY);
+       }
 
 
         editor.apply();
