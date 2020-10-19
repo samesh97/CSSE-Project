@@ -204,17 +204,23 @@ public class OrderViewSitemanager extends AppCompatActivity  {
             {
                 if(snapshot.exists())
                 {
+                    User user = LoginState.getInstance().getUser(OrderViewSitemanager.this);
+                    Manager manager = (Manager) user;
                     for (DataSnapshot dss : snapshot.getChildren())
                     {
                         Order order = dss.getValue(Order.class);
-                        if(status.equals("All orders"))
+                        if(order != null & manager != null && order.getCompanyId().equals(manager.getCompanyId()))
                         {
-                            orderList.add(order);
+                            if(status.equals("All orders"))
+                            {
+                                orderList.add(order);
+                            }
+                            else if(order.getStatus().equals(status))
+                            {
+                                orderList.add(order);
+                            }
                         }
-                        else if(order != null && order.getStatus().equals(status))
-                        {
-                            orderList.add(order);
-                        }
+
                         orderAdapter.notifyDataSetChanged();
                     }
                 }

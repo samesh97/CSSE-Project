@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".InvoicesMain"/>
         <activity android:name=".activities.SupplierLoggedActivity" />
         <activity android:name=".activities.PaymentView" />
         <activity android:name=".activities.View_good_receipt" />
